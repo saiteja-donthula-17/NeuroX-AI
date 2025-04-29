@@ -1,0 +1,452 @@
+.chatPage {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  padding-top: 10px;
+  overflow-y: auto;
+  width: 100%;
+}
+
+.wrapper {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  overflow-y: auto;
+  padding-bottom: 100px; /* Increased from 80px to provide more space */
+  position: relative;
+}
+
+.chat {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 0 20px 60px 20px;
+  transition: all 0.3s ease;
+}
+
+p,
+li {
+  margin: 10px 0px;
+}
+
+.message {
+  padding: 20px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  position: relative;
+  padding-bottom: 40px;
+
+  &.user {
+    background-color: #2c2937;
+    border-radius: 20px;
+    max-width: 80%;
+    align-self: flex-end;
+    padding-bottom: 40px; 
+    min-width: 7%;
+  }
+  .message-logo {
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+}
+
+.chat-message {
+  position: relative;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  max-width: 80%;
+  transition: background-color 0.3s;
+}
+
+.message:hover .message-icons {
+  display: flex; 
+}
+
+.message-icons {
+  display: none; 
+  align-items: center;
+  gap: 10px;
+  position: absolute;
+  bottom: 10px; 
+  right: 10px; 
+  flex-shrink: 1;
+}
+
+.copy-icon,
+.speak-icon {
+  cursor: pointer;
+  font-size: 1.2em;
+  color: #7d7878;
+  transition: color 0.2s ease;
+
+}
+
+.copy-icon:hover,
+.speak-icon:hover {
+  color: #f6f6fa;
+}
+
+
+/* Add this to your existing CSS */
+.justified-text {
+  text-align: justify;
+  line-height: 1.5;
+}
+
+/* Make sure this is applied to message content */
+.message-content {
+  text-align: justify;
+}
+
+
+/* Enhanced Table styling - Improved for mobile */
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  margin: 15px 0;
+  border-radius: 8px;
+  background-color: rgba(44, 41, 55, 0.7);
+  position: relative;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: #5437bd #2c2937;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(84, 55, 189, 0.3);
+  max-width: 100%;
+  /* Never wrap content, always use horizontal scroll */
+  white-space: nowrap;
+}
+
+/* Improve table responsiveness */
+.table-content {
+  min-width: 100%;
+  display: block;
+  overflow-x: auto; /* Enable horizontal scrolling within container */
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+  /* Never wrap content */
+  white-space: nowrap;
+}
+
+.table-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0;
+  color: #ececec;
+  min-width: 300px;
+  table-layout: auto;
+}
+
+.table-content th {
+  background-color: rgba(84, 55, 189, 0.4); /* Increased opacity for better visibility */
+  color: #ffffff; /* Brighter text for better contrast */
+  font-weight: bold;
+  text-align: left;
+  padding: 12px; /* Increased padding */
+  border: 1px solid #555; /* Lighter border color */
+  white-space: nowrap;
+}
+
+.table-content td {
+  padding: 10px 12px; /* Increased padding */
+  border: 1px solid #555; /* Lighter border color */
+  text-align: left;
+  vertical-align: top;
+}
+
+.table-content tr:nth-child(even) {
+  background-color: rgba(44, 41, 55, 0.7); /* Increased opacity */
+}
+
+.table-content tr:hover {
+  background-color: rgba(84, 55, 189, 0.2); /* More visible hover effect */
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .table-content th,
+  .table-content td {
+    padding: 6px 8px;
+    font-size: 0.9em;
+    /* Don't wrap text in table cells */
+    white-space: nowrap;
+  }
+  
+  .table-container {
+    max-width: 100%;
+    border-radius: 6px;
+    /* Ensure horizontal scrolling */
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  
+  /* Add subtle indicator for scrollable tables on mobile */
+  .table-container::after {
+    content: '⟺';
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 12px;
+    pointer-events: none;
+    opacity: 0.7;
+  }
+  
+  /* Ensure code blocks also scroll horizontally instead of wrapping */
+  .code-block {
+    overflow-x: auto;
+    white-space: pre;
+  }
+  
+  .code-block pre {
+    white-space: pre;
+    overflow-x: auto;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .table-content th,
+  .table-content td {
+    padding: 5px 6px;
+    font-size: 0.85em;
+  }
+  
+  /* Ensure tables don't break the layout on very small screens */
+  .message .table-container {
+    margin: 10px -5px; /* Negative margin to allow full width */
+    width: calc(100% + 10px);
+  }
+}
+
+/* Improve responsive adjustments for the chat container */
+@media screen and (max-width: 1024px) {
+  .chat {
+    width: 90%;
+  }
+  
+  .message {
+    max-width: 90%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .chat {
+    width: 95%;
+    padding: 0 10px;
+  }
+  
+  .message.user {
+    max-width: 90%;
+  }
+  
+  .message {
+    padding: 15px;
+    padding-bottom: 40px;
+    max-width: 95%;
+  }
+  
+  /* Ensure tables are fully visible */
+  .table-container {
+    max-width: 100%;
+    margin: 10px 0;
+    overflow-x: auto;
+  }
+  
+  /* Make table text smaller on mobile */
+  .table-content th,
+  .table-content td {
+    padding: 8px;
+    font-size: 0.9em;
+    white-space: normal; /* Allow text wrapping */
+    word-break: break-word; /* Break words to prevent overflow */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .wrapper {
+    padding-bottom: 120px; /* Extra space for the input form */
+  }
+  
+  .chat {
+    width: 100%;
+    padding: 0 5px; /* Reduce padding to maximize space */
+  }
+  
+  .message {
+    padding: 12px;
+    padding-bottom: 40px;
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  
+  .message.user {
+    max-width: 95%;
+  }
+  
+  /* Improve table display on small screens */
+  .table-container {
+    margin: 10px 0;
+    width: 100%;
+    border-radius: 6px;
+  }
+  
+  .table-content th,
+  .table-content td {
+    padding: 4px 5px;
+    font-size: 0.8em;
+    word-break: break-word;
+  }
+  
+  /* Enhanced content display for all message types */
+  .message-content {
+    text-align: left;
+    width: 100%;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    max-width: 100%;
+  }
+}
+
+/* Improved Table styling for better responsiveness */
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  margin: 15px 0;
+  border-radius: 8px;
+  background-color: rgba(44, 41, 55, 0.7);
+  position: relative;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: #5437bd #2c2937;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(84, 55, 189, 0.3);
+  max-width: 100%;
+}
+
+/* Ensure code blocks are properly displayed */
+.message .code-block {
+  background-color: #2b2b2b;
+  padding: 1em;
+  border-radius: 10px;
+  position: relative;
+  font-family: monospace;
+  margin-top: 10px;
+  overflow-x: auto;
+  max-width: 100%;
+}
+
+.message .code-block pre {
+  white-space: pre;
+  overflow-x: auto;
+  margin: 0;
+  padding: 0;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 1024px) {
+  .chat {
+    width: 90%;
+  }
+  
+  .message {
+    max-width: 90%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .chat {
+    width: 95%;
+    padding: 0 10px;
+  }
+  
+  .message.user {
+    max-width: 90%;
+  }
+  
+  .message {
+    padding: 15px;
+    padding-bottom: 40px;
+    max-width: 95%;
+  }
+  
+  /* Ensure tables are fully visible */
+  .table-container {
+    max-width: 100%;
+    margin: 10px 0;
+    overflow-x: auto;
+  }
+  
+  /* Make table text smaller on mobile */
+  .table-content th,
+  .table-content td {
+    padding: 8px;
+    font-size: 0.9em;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .wrapper {
+    padding-bottom: 120px; /* Extra space for the input form */
+  }
+  
+  .chat {
+    width: 100%;
+    padding: 0 5px; /* Reduce padding to maximize space */
+  }
+  
+  .message {
+    padding: 12px;
+    padding-bottom: 40px;
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  
+  .message.user {
+    max-width: 95%;
+  }
+  
+  /* Improve table display on small screens */
+  .table-container {
+    margin: 10px 0;
+    width: 100%;
+    border-radius: 6px;
+  }
+  
+  .table-content th,
+  .table-content td {
+    padding: 4px 5px;
+    font-size: 0.8em;
+  }
+}
+
+/* Ensure all content with potential overflow uses horizontal scrolling */
+pre, code, .table-container, .code-block {
+  overflow-x: auto;
+  white-space: pre;
+  max-width: 100%;
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+}
+
+/* Add visual indicator for scrollable content on mobile */
+@media screen and (max-width: 768px) {
+  .table-container::after,
+  .code-block::after {
+    content: '⟺';
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 12px;
+    pointer-events: none;
+    opacity: 0.7;
+  }
+}
+

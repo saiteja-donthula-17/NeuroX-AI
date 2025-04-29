@@ -1,0 +1,352 @@
+
+
+.dashboardPage {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.texts {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 60%;
+  gap: 40px;
+  text-align: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  opacity: 0.8;
+}
+
+.logo img {
+  width: 150px;
+  height: auto;
+}
+
+.logo h1 {
+  font-size: 48px;
+  background: linear-gradient(to right, #217bfe, #e55571);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.options {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.option {
+  flex: 1;
+  min-width: 120px;
+  max-width: 160px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-weight: 300;
+  font-size: 14px;
+  padding: 15px;
+  border: 1px solid #555;
+  border-radius: 10px;
+  text-align: center;
+  transition: transform 0.3s ease;
+  background-color: #2c2937;
+}
+
+.option:hover {
+  transform: scale(1.05);
+}
+
+.option img {
+  align-self: center;
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+}
+
+.formContainer {
+  width: 60%;
+  max-width: 600px;
+  background-color: #2c2937;
+  border-radius: 20px;
+  margin: 20px 0;
+  display: flex;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+form {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+form input[type="text"] {
+  flex: 1;
+  padding: 15px;
+  background-color: transparent;
+  border-radius: 10px;
+  outline: none;
+  color: #ececec;
+  font-size: 16px;
+}
+form button.active-send{
+  background-color: white;
+}
+form button.active-send img{
+  filter: invert(1);
+}
+
+form button,
+form label {
+  background-color: #605e68;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+form button:hover,
+form label:hover {
+  background-color: #757380;
+}
+
+form button img,
+form label img {
+  width: 16px;
+  height: 16px;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 1024px) {
+  .texts {
+    width: 80%;
+    gap: 30px;
+  }
+
+  .logo img {
+    width: 100px;
+  }
+
+  .logo h1 {
+    font-size: 36px;
+  }
+
+  .options {
+    gap: 15px;
+  }
+
+  .option {
+    min-width: 100px;
+    padding: 10px;
+    font-size: 12px;
+  }
+
+  .formContainer {
+    width: 80%;
+    padding: 15px;
+  }
+
+  form input[type="text"] {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .texts {
+    width: 90%;
+    gap: 20px;
+  }
+
+  .logo img {
+    width: 80px;
+  }
+
+  .logo h1 {
+    font-size: 28px;
+  }
+
+  .options {
+    gap: 10px;
+  }
+
+  .option {
+    min-width: 80px;
+    font-size: 10px;
+    padding: 8px;
+  }
+
+  .formContainer {
+    width: 90%;
+    padding: 10px;
+  }
+
+  form input[type="text"] {
+    font-size: 12px;
+    padding: 8px;
+  }
+
+  form button img,
+  form label img {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .texts {
+    width: 100%;
+    gap: 15px;
+  }
+
+  .logo img {
+    width: 60px;
+  }
+
+  .logo h1 {
+    font-size: 20px;
+  }
+
+  .options {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .option {
+    width: 100%;
+    font-size: 12px;
+    padding: 10px;
+  }
+
+  .formContainer {
+    width: 80%;
+    padding: 8px;
+  }
+
+  form {
+    gap: 10px;
+  }
+
+  form input[type="text"] {
+    width: 100%;
+    font-size: 14px;
+  
+  }
+
+  form button img,
+  form label img {
+    width: 12px;
+    height: 12px;
+  }
+}
+
+@media screen and (min-width: 480px) and (max-width:580px) {
+  .formContainer {
+    width: 80%;
+    padding: 8px;
+  }
+
+  form {
+    gap: 10px;
+  }
+
+  form input[type="text"] {
+    width: 100%;
+    font-size: 14px;
+  
+  }
+
+  form button img,
+  form label img {
+    width: 12px;
+    height: 12px;
+  }
+}
+
+
+/* Add these styles at the end of your file */
+
+/* Responsive fixes for small devices */
+@media screen and (max-width: 480px) {
+  .dashboardPage {
+    padding: 10px;
+  }
+  
+  .texts {
+    width: 95%;
+    gap: 15px;
+  }
+  
+  .logo img {
+    width: 60px;
+  }
+  
+  .logo h1 {
+    font-size: 24px;
+  }
+  
+  .options {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+  
+  .option {
+    min-width: 90%;
+    padding: 8px;
+    font-size: 12px;
+  }
+  
+  .formContainer {
+    width: 95%;
+    padding: 10px;
+  }
+  
+  form input[type="text"] {
+    padding: 10px;
+    font-size: 14px;
+  }
+}
+
+/* Tablet-specific fixes (including Galaxy Tab S7) */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .dashboardPage {
+    padding: 20px;
+  }
+  
+  .texts {
+    width: 90%;
+  }
+  
+  .options {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .option {
+    min-width: 150px;
+  }
+  
+  .formContainer {
+    width: 90%;
+  }
+}

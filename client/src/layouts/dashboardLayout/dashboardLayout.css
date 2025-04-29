@@ -1,0 +1,99 @@
+/* 
+
+.dashboardLayout {
+  display: flex;
+  height: 100%;
+  gap: 10px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.menuToggle {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  border: none;
+  color: gray;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 10;
+  transition: color 0.2s ease;
+}
+
+.menuToggle:hover {
+  color: white;
+}
+
+.menu {
+  flex: 1;
+  min-width: 200px;
+  max-width: 250px;
+  margin-top: 50px;
+  transition: all 0.3s ease;
+}
+
+.content {
+  flex: 4;
+  background-color: #12101b;
+  transition: flex 0.3s ease;
+}
+
+.dashboardLayout.collapsed .menu {
+  display: none;
+}
+
+.dashboardLayout.collapsed .content {
+  flex: 1 1 100%;
+}
+
+@media screen and (max-width: 390px) {
+  .menu {
+    display: none;
+  }
+
+  .menuToggle {
+    font-size: 18px;
+  }
+} */
+
+.dashboardLayout {
+  display: flex;
+  height: 100%;
+  gap: 10px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.menu {
+  flex: 1;
+  min-width: 200px;
+  max-width: 250px;
+  transition: max-width 0.3s ease, opacity 0.3s ease; /* Transition for width and opacity */
+  opacity: 1; /* Make it visible */
+  overflow: hidden;
+}
+
+.content {
+  flex: 4;
+  background-color: #12101b;
+}
+
+.dashboardLayout.collapsed .menu {
+  max-width: 0; /* Collapse the sidebar to width 0 */
+  opacity: 0; /* Make the sidebar invisible */
+  display: none; /* Ensure the menu is not visible when collapsed */
+}
+
+.dashboardLayout.collapsed .content {
+  flex: 1 1 100%; /* Expand content area to fill space */
+}
+
+@media screen and (max-width: 390px) {
+  .menu {
+    display: none;
+  }
+
+  .menuToggle {
+    font-size: 18px;
+  }
+}

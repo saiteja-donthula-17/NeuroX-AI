@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+ 
+    "target": "ES6",                          // Specify ECMAScript target version
+    "module": "CommonJS",                     // Specify module code generation
+    "jsx": "react-jsx",                       // Use React JSX support
+    "strict": true,                           // Enable all strict type-checking options
+    "esModuleInterop": true,                  // Enable import/export interoperability
+    "skipLibCheck": true,                     // Skip type checking of all declaration files
+    "forceConsistentCasingInFileNames": true  // Ensure consistent casing in module imports
+  },
+  "include": ["src/**/*"],                    // Include all files in the 'src' directory
+  "exclude": ["node_modules", "dist"] 
+}
