@@ -1,7 +1,7 @@
 # <div align="center">🧠 NeuroX AI</div>
 
 <div align="center">
-  <img src="./assets/logo.png" alt="NeuroX AI Logo" width="200px">
+  <img src="./client/public/logo.png" alt="NeuroX AI Logo" width="200px">
   <h3>Full-Stack Conversational Intelligence Powered by Google Gemini</h3>
   
   [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
