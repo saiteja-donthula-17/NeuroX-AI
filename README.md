@@ -225,7 +225,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
   
   <br/>
   
-  <a href="https://github.com/yourusername">
+  <a href="https://github.com/saiteja-donthula-17">
     <img src="https://img.shields.io/badge/GitHub-Profile-blue?style=for-the-badge&logo=github&logoColor=white&color=6e5494"/>
   </a>
   <a href="https://www.linkedin.com/in/donthula-saiteja/">
