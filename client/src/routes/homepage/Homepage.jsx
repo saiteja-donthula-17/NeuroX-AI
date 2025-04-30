@@ -8,7 +8,6 @@ import { Boxes } from "../../components/aceternity/BackgroundBoxes/BackgroundBox
 import Intro from "../../components/Intro/Intro";
 
 const Homepage = () => {
-  const [typingStatus, setTypingStatus] = useState("human1");
   const [windowSize, setWindowSize] = useState({
     width: window.innerWidth,
     height: window.innerHeight
@@ -53,61 +52,32 @@ const Homepage = () => {
         </div>
 
         <div className="right">
-          {/* Using BackgroundBeamsWithCollision component directly */}
           <BackgroundBeamsWithCollision>
             <img src="/3.png" alt="Bot Image" className="botImage" />
-            {windowSize.width > 768 && (
-              <div className="chat">
-                <img
-                  src={
-                    typingStatus === "human1"
-                      ? "/human1.jpeg"
-                      : typingStatus === "human2"
-                      ? "/human2.jpeg"
-                      : "/2.png"
-                  }
-                  alt="Chat User"
-                />
-                <TypeAnimation
-                  sequence={[
-                    "Human1: What powers you, NeuroX AI?",
-                    2000,
-                    () => {
-                      setTypingStatus("bot");
-                    },
-                    "Bot:  I'm built on cutting-edge AI tech, fast and efficient.",
-                    2000,
-                    () => {
-                      setTypingStatus("human2");
-                    },
-                    "Human2: Is AI the future?",
-                    2000,
-                    () => {
-                      setTypingStatus("bot");
-                    },
-                    "Bot: Absolutely! It's shaping a smarter, connected world.",
-                    2000,
-                    () => {
-                      setTypingStatus("human1");
-                    },
-                    "Human1: Will it replace us?",
-                    2000,
-                    () => {
-                      setTypingStatus("bot");
-                    },
-                    "Bot: No, it collaborates with us to do amazing things!",
-                    2000,
-                    () => {
-                      setTypingStatus("human2");
-                    },
-                  ]}
-                  wrapper="span"
-                  repeat={Infinity}
-                  cursor={true}
-                  omitDeletionAnimation={true}
-                />
+            <div className="chat">
+              <img src="/2.png" alt="Bot Avatar" />
+              <div className="typing-container">
+                <div className="typing-text">
+                  <TypeAnimation
+                    sequence={[
+                      "Hi there! I'm NeuroX AI, your intelligent assistant.",
+                      1500,
+                      "I can help with creative ideas, problem-solving, and more!",
+                      1500,
+                      "Ask me anything - I'm powered by cutting-edge AI technology.",
+                      1500,
+                      "Let's collaborate and bring your vision to life!",
+                      1500,
+                    ]}
+                    wrapper="span"
+                    speed={50}
+                    repeat={Infinity}
+                    cursor={true}
+                    style={{ display: 'inline-block' }}
+                  />
+                </div>
               </div>
-            )}
+            </div>
           </BackgroundBeamsWithCollision>
         </div>
 

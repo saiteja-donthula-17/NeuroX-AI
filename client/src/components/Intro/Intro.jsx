@@ -36,7 +36,7 @@ const Intro = () => {
           duration:1,
         },'one')
         tl.to('.intro', {
-          y: -1000,
+          y: -2000,
           duration: 0.5,
           
           ease: 'circ.in',

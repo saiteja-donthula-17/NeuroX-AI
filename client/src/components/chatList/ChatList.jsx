@@ -11,7 +11,7 @@ import { useState, useEffect } from "react";
 const ChatList = () => {
   const queryClient = useQueryClient();
   const location = useLocation();
-  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const isHomepage = location.pathname === "/";
 
   const { isPending, error, data } = useQuery({

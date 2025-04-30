@@ -63,7 +63,7 @@
     height: 50%;
     max-width: 40%;
     z-index: 5;
-    margin-right: 30px;
+    position: relative;
 
     .botImage {
       width: 60%;
@@ -71,6 +71,34 @@
       object-fit: contain;
       animation: 3s ease-in-out infinite alternate botAnimate;
     }
+
+    .chat {
+      position: absolute;
+      bottom: -20px;
+      right: 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 20px;
+      background-color: #5437bd;
+      border-radius: 10px;
+      max-width: 90%;
+      overflow: hidden;
+      flex-wrap: nowrap;
+
+      img {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        flex-shrink: 0;
+      }
+
+      span {
+        white-space: normal;
+        word-break: break-word;
+      }
+    }
+  }
 
     @media screen and (max-width: 760px) {
       .right{
@@ -250,6 +278,7 @@
 
   .right {
     display: flex;
+    
     align-items: center;
     justify-content: center;
     height: 50%;
@@ -373,5 +402,207 @@
     display: inline-block; /* Ensures it behaves inline without breaking */
     
     text-align: center; /* Center alignment if needed */
+  }
+}
+
+/* Responsive styles for the chat component */
+@media screen and (max-width: 768px) {
+  .homepage .right {
+    flex-direction: column;
+    max-width: 90%;
+  }
+  
+  .homepage .right .chat {
+    display: flex; /* Make sure it's visible on mobile */
+    width: 90%;
+    margin: 10px auto;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .homepage .right .chat {
+    padding: 8px;
+    font-size: 0.8rem;
+  }
+  
+  .homepage .right .chat img {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+/* Updated styling for the right section and chat */
+.right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50%;
+  max-width: 40%;
+  z-index: 5;
+  position: relative;
+}
+
+.right .botImage {
+  width: 60%;
+  height: auto;
+  object-fit: contain;
+  animation: 3s ease-in-out infinite alternate botAnimate;
+}
+
+.right .chat {
+  position: absolute;
+  bottom: -20px;
+  right: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px;
+  background-color: #5437bd;
+  border-radius: 10px;
+  max-width: 300px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+}
+
+.right .chat img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.typing-container {
+  flex: 1;
+  overflow: hidden;
+}
+
+.typing-text {
+  font-size: 14px;
+  color: white;
+  line-height: 1.4;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.typing-text span {
+  display: inline-block;
+  white-space: normal;
+  word-break: break-word;
+}
+
+/* Responsive styles for the chat component */
+@media screen and (max-width: 1280px) {
+  .right .chat {
+    max-width: 250px;
+    padding: 12px;
+  }
+  
+  .typing-text {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .right {
+    max-width: 60%;
+    margin-top: 20px;
+  }
+  
+  /* Typing animation for tab devices */
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
+    .right .chat {
+      display: flex !important; /* Ensure chat is visible on tablets */
+      position: relative;
+      bottom: 0;
+      right: 0;
+      margin-top: 20px;
+      max-width: 280px;
+    }
+    
+    .typing-container {
+      flex: 1;
+      overflow: hidden;
+    }
+    
+    .typing-text {
+      font-size: 13px;
+      animation: typing 1.5s infinite;
+    }
+  }
+  
+  /* Animation for the typing effect */
+  @keyframes typing {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .right {
+    max-width: 80%;
+  }
+  
+  .right .chat {
+    display: flex;
+    width: 100%;
+    max-width: 90%;
+    margin: 20px auto 0;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .right .chat {
+    padding: 8px;
+    font-size: 0.8rem;
+  }
+  
+  .right .chat img {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .typing-text {
+    font-size: 11px;
+  }
+}
+
+/* Fix for Clerk user profile menu on mobile */
+.cl-userButtonTrigger,
+.cl-userButtonAvatarBox,
+.cl-userButtonAvatarImage {
+  z-index: 1000 !important; /* Ensure it's above other elements */
+  position: relative !important;
+  pointer-events: auto !important; /* Ensure clicks are registered */
+}
+
+.cl-userButtonPopoverCard {
+  z-index: 1001 !important; /* Ensure dropdown is above everything */
+  position: absolute !important;
+  pointer-events: auto !important;
+}
+
+/* Additional mobile-specific fixes */
+@media screen and (max-width: 768px) {
+  .cl-userButtonPopoverCard {
+    position: fixed !important;
+    top: auto !important;
+    bottom: 70px !important; /* Position from bottom instead of top */
+    right: 10px !important;
+    left: auto !important;
+    max-width: 250px !important;
+    width: 80% !important;
+  }
+}
+
+/* Fix for very small screens */
+@media screen and (max-width: 480px) {
+  .cl-userButtonPopoverCard {
+    top: 60px !important;
+    right: 5px !important;
+    width: 90% !important;
+    height: auto !important; /* Allow height to adjust to content */
+    max-height: 50vh !important; /* Limit maximum height to 80% of viewport height */
+    overflow-y: auto !important; /* Enable scrolling if content is too tall */
   }
 }
