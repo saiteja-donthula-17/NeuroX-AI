@@ -71,9 +71,3 @@ app.get("/", (req, res) => {
 app.get("*", (req, res) => {
   res.sendFile(path.join(rootDir, "../client/dist", "index.html"));
 });
-
-// Start server
-app.listen(port, () => {
-  connect();
-  console.log(`Server running on port ${port}`);
-});
