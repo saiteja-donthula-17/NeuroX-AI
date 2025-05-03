@@ -16,14 +16,27 @@ dotenv.config();
 const port = process.env.PORT || 3000;
 const app = express();
 
+// Log environment variables (for debugging)
+console.log("Environment variables loaded:");
+console.log("CLIENT_URL:", process.env.CLIENT_URL);
+console.log("MONGO connection string exists:", !!process.env.MONGO);
+console.log("CLERK_SECRET_KEY exists:", !!process.env.CLERK_SECRET_KEY);
+
 // Middleware
 app.use(
   cors({
-    origin: process.env.CLIENT_URL,
+    origin: [process.env.CLIENT_URL, "https://neuro-x-ai.vercel.app"],
     credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"]
   })
 );
 app.use(express.json());
+
+// Add a health check endpoint
+app.get("/api/health", (req, res) => {
+  res.status(200).json({ status: "ok", message: "Server is running" });
+});
 
 // API Routes
 app.use("/api/chats", chatRoutes);
@@ -35,6 +48,21 @@ app.use(errorHandler);
 
 // Production setup - Serve static files
 app.use(express.static(path.join(rootDir, "../client/dist")));
+
+// Connect to MongoDB
+connect()
+  .then(() => {
+    app.listen(port, () => {
+      console.log(`Server running on port ${port}`);
+    });
+  })
+  .catch((err) => {
+    console.error("Failed to connect to MongoDB:", err);
+    // Start server even if MongoDB connection fails
+    app.listen(port, () => {
+      console.log(`Server running on port ${port} (without MongoDB connection)`);
+    });
+  });
 
 // Catch-all route for SPA
 app.get("/", (req, res) => {
