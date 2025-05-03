@@ -8,12 +8,15 @@ import ReactMarkdown from "react-markdown";
 import { FaStop, FaVolumeUp, FaCopy } from "react-icons/fa";
 import { MdOutlineMoreHoriz } from 'react-icons/md';
 import remarkGfm from 'remark-gfm';
+import { useAuth } from "@clerk/clerk-react";
 
 const ChatPage = () => {
   const path = useLocation().pathname;
   const chatId = path.split("/").pop();
   const navigate = useNavigate();
   const queryClient = useQueryClient();
+
+  const { getToken } = useAuth();
   
   // States for chat functionality
   const [selectedChatId, setSelectedChatId] = useState(null);
@@ -30,10 +33,12 @@ const ChatPage = () => {
   // Delete chat mutation
   const deleteMutation = useMutation({
     mutationFn: async (id) => {
+      const token = await getToken();
       const res = await fetch(`${import.meta.env.VITE_API_URL}/api/chats/${id}`, {
         method: "DELETE",
         credentials: "include",
         headers: {
+          Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
         },
       });

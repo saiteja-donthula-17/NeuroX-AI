@@ -3,6 +3,7 @@ import "./dashboardPage.css";
 import { useNavigate } from "react-router-dom";
 import Upload from "../../components/upload/Upload";
 import { useState } from "react";
+import { useAuth } from "@clerk/clerk-react";
 
 
 const DashboardPage = () => {
@@ -15,14 +16,17 @@ const DashboardPage = () => {
     dbData: {},
     aiData: {},
   });
+  const { getToken } = useAuth();
 
 
   const mutation = useMutation({
     mutationFn: (text) => {
+      const token = await getToken();
       return fetch(`${import.meta.env.VITE_API_URL}/api/chats`, {
         method: "POST",
         credentials: "include",
         headers: {
+          Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ text }),

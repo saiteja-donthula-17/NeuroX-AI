@@ -7,12 +7,14 @@ import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { useState, useEffect } from "react";
+import { useAuth } from "@clerk/clerk-react";
 
 const ChatList = () => {
   const queryClient = useQueryClient();
   const location = useLocation();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const isHomepage = location.pathname === "/";
+  const { getToken } = useAuth();
 
   const { isPending, error, data } = useQuery({
     queryKey: ["userChats"],
@@ -36,10 +38,12 @@ const ChatList = () => {
 
   const mutation = useMutation({
     mutationFn: async (id) => {
+      const token = await getToken();
       const res = await fetch(`${import.meta.env.VITE_API_URL}/api/chats/${id}`, {
         method: "DELETE",
         credentials: "include",
         headers: {
+          Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
         },
       });
