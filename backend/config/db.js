@@ -2,10 +2,18 @@ import mongoose from "mongoose";
 
 const connect = async () => {
   try {
-    await mongoose.connect(process.env.MONGO);
+    if (!process.env.MONGO) {
+      throw new Error("MONGO connection string not defined in environment");
+    }
+
+    await mongoose.connect(process.env.MONGO, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+
     console.log("Connected to MongoDB");
   } catch (err) {
-    console.log(err);
+    console.error("MongoDB connection error:", err.message);
   }
 };
 
