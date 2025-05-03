@@ -20,9 +20,19 @@ const ChatList = () => {
     queryKey: ["userChats"],
     queryFn: async () => {
       const apiUrl = import.meta.env.VITE_API_URL;
+      const token = await getToken(); // Get the Clerk token
       const res = await fetch(`${apiUrl}/api/userchats`, {
         credentials: "include",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
       });
+      
+      if (!res.ok) {
+        throw new Error(`API request failed with status ${res.status}`);
+      }
+      
       return await res.json();
     },
   });
