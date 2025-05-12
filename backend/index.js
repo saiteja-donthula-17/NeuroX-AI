@@ -25,7 +25,7 @@ console.log("CLERK_SECRET_KEY exists:", !!process.env.CLERK_SECRET_KEY);
 // Middleware
 app.use(
   cors({
-    origin: [process.env.CLIENT_URL, "https://neuro-x-ai.vercel.app"],
+    origin: [process.env.CLIENT_URL],
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"]
@@ -46,9 +46,6 @@ app.use("/api/userchats", userChatsRoutes);
 // Error handling middleware
 app.use(errorHandler);
 
-// Production setup - Serve static files
-app.use(express.static(path.join(rootDir, "../client/dist")));
-
 // Connect to MongoDB
 connect()
   .then(() => {
@@ -68,6 +65,4 @@ connect()
 app.get("/", (req, res) => {
   res.send("API is running...");
 });
-app.get("*", (req, res) => {
-  res.sendFile(path.join(rootDir, "../client/dist", "index.html"));
-});
+
