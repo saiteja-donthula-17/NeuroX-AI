@@ -47,7 +47,7 @@ const NewPrompt = ({ data }) => {
   };
 
   const mutation = useMutation({
-    mutationFn: () => {
+    mutationFn: async() => {
       const token = await getToken();
       return fetch(`${import.meta.env.VITE_API_URL}/api/chats/${data._id}`, {
         method: "PUT",
